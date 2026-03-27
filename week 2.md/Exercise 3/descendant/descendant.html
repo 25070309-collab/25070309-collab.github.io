@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thực hành CSS Nested Selectors</title>
+    <style>
+        /* 1. Descendant Selector (Slide 1): div.items a */
+        /* Chọn tất cả thẻ <a> nằm bên trong thẻ div có class "items" */
+        div.items a {
+            color: green;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* 2. Adjacent Sibling Selector (Slide 2): p + p */
+        /* Chọn thẻ <p> nằm ngay sau một thẻ <p> khác */
+        p + p {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* 3. Direct Child Selector (Slide 3): div > span */
+        /* Chỉ chọn thẻ <span> là con trực tiếp của <div> */
+        div > span {
+            background-color: DodgerBlue;
+            color: white;
+        }
+        /* Các span khác reset về mặc định hoặc trắng */
+        span { background-color: #fff; color: black; }
+
+        /* 4. Multiple Classes (Slide 4) */
+        .apple { color: red; }
+        .orange { color: orange; }
+        .small { font-size: 16px; }
+        /* Chọn phần tử có đồng thời cả class apple và orange */
+        .apple.orange {
+            font-style: italic;
+        }
+
+        /* Định dạng thêm cho dễ nhìn */
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        section { border: 1px solid #ccc; margin-bottom: 20px; padding: 10px; }
+        h3 { border-bottom: 2px solid #333; }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h3>1. Descendant Selector (div.items a)</h3>
+        <div class="items">
+            <a href="#">Item1</a> <a href="#">Item2</a> <a href="#">Item3</a>
+            <ul>
+                <li><a href="#">Item4</a></li>
+                <li><a href="#">Item5</a></li>
+                <li><a href="#">Item6</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h3>2. Adjacent Sibling (p + p)</h3>
+        <div>
+            <p>I'm a paragraph</p>
+            <p>I am selected! (Vì đứng ngay sau p)</p>
+            <p>I'm a paragraph</p>
+        </div>
+        <hr>
+        <div>
+            <p>I'm a paragraph</p>
+            <h2>Monkey hair</h2>
+            <p>I am NOT selected (Vì bị ngăn cách bởi h2)</p>
+        </div>
+    </section>
+
+    <section>
+        <h3>3. Direct Child (div > span)</h3>
+        <div>
+            <span>Span #1, in the div. (Được chọn)</span>
+            <span>
+                <span>Span #2, in the span that's... (Không được chọn vì là cháu)</span>
+            </span>
+        </div>
+        <span>Span #3, not in the div at all. (Không được chọn)</span>
+    </section>
+
+    <section>
+        <h3>4. Multiple Classes (.apple.orange)</h3>
+        <h2 class="apple orange small">Apple + Orange</h2>
+        <h2 class="apple">Apple</h2>
+        <h2 class="orange">Orange</h2>
+    </section>
+
+</body>
+</html>
